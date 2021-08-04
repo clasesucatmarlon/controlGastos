@@ -1,22 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+
+import Pregunta from './componentes/Pregunta'
+import Formulario from './componentes/Formulario'
+
+import './index.css';
 
 function App() {
+
+  const [presupuesto, setPresupuesto] = useState(0);
+  const [restante, setRestante] = useState(0);
+  const [mostrarpregunta, setMostrarPregunta] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="container">
+      <header>
+        <h1>Control de Presupuesto</h1>
+        <div className="contenido-principal contenido">
+          { mostrarpregunta ? 
+            (
+              <Pregunta 
+                setPresupuesto={setPresupuesto}
+                setRestante={setRestante}
+                setMostrarPregunta={setMostrarPregunta}
+              />
+            ): 
+            (
+              <div className="row">
+                <div className="one-half column">
+                    <Formulario />
+                </div>
+                <div className="one-half column">
+                  two
+                </div>
+              </div>
+            )
+          }
+          
+
+          
+        </div>
       </header>
     </div>
   );
